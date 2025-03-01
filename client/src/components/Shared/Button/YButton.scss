@@ -1,0 +1,15 @@
+.y-button {
+    font-size: 18px;
+    padding: 12px;
+    height: 3rem;
+    text-transform: none;
+    border-radius: 6px;
+  
+    &.full-width {
+      width: 100%;
+    }
+  
+    &.disabled {
+      opacity: 0.5;
+    }
+  }

@@ -1,0 +1,16 @@
+.box-url-share {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+  
+    .title {
+      font-weight: bold;
+    }
+  
+    .url {
+      word-break: break-all;
+      margin-top: 0.5rem;
+    }
+  }
