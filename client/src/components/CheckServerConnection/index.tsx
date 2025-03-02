@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Typography, Box } from '@mui/material';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import './CheckServerConnection.scss';
+import config from 'config';
 
 const CheckServerConnection: React.FC = () => {
     const [serverStatus, setServerStatus] = useState({ text: 'Checking server...', color: '#f1c40f' });
 
     useEffect(() => {
-        fetch('http://localhost:3031')
+        fetch(config.apiBaseUrl)
             .then(response => {
                 return response.text();
             })
