@@ -35,7 +35,9 @@ const BtnsPanel: React.FC<BtnsPanelProps> = ({
   handleRestart,
 }) => {
 
-  const [today] = useState<Dayjs>(dayjs());
+  const [minDate] = useState<Dayjs>(dayjs());
+  const [maxDate] = useState<Dayjs>(minDate.add(2, 'month'));
+
 
   if (uploadStatus === UploadStatus.Success) {
     return (
@@ -78,7 +80,8 @@ const BtnsPanel: React.FC<BtnsPanelProps> = ({
           label="Set Expiration Date"
           value={expirationDate}
           onChange={handleDateChange}
-          minDate={today}
+          minDate={minDate}
+          maxDate={maxDate}
           slotProps={{ textField: { fullWidth: true, variant: 'outlined' } }}
         />
       </LocalizationProvider>
