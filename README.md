@@ -8,4 +8,5 @@
 - I added some routes and data for check up (server status, see Db route...)
 - Mix Date for expartion date: Today, Max Date: 2 mounts from Today
 - The backend controls the process of deleteing images (and the testing of this process as well)
-- handle dev, test, and production modes.
+- Handle dev, test, and production modes.
+- Used a library to copy url to clipboard bcs my server is insecure and it is small library insted of large code.
