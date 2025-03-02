@@ -1,6 +1,6 @@
-import { Card, CardContent, Typography, IconButton } from '@mui/material';
+import { Card, CardContent, Typography, IconButton, Tooltip } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import React from 'react';
+import React, { useState } from 'react';
 import './UrlShareBox.scss';
 
 interface UrlShareBoxProps {
@@ -8,6 +8,15 @@ interface UrlShareBoxProps {
 }
 
 const UrlShareBox: React.FC<UrlShareBoxProps> = ({ url }) => {
+    const [copiedUrl, setCopiedUrl] = useState(false);
+
+    const handleCopyUrl = () => {
+        navigator.clipboard.writeText(url).then(() => {
+            setCopiedUrl(true);
+            setTimeout(() => setCopiedUrl(false), 2000);
+        }).catch(err => console.error("Failed to copy:", err));
+    };
+
     if (!url) return null;
 
     return (
@@ -15,9 +24,11 @@ const UrlShareBox: React.FC<UrlShareBoxProps> = ({ url }) => {
             <CardContent>
                 <Typography variant="h6" className="title">Your Link Is Ready!</Typography>
                 <Typography variant="body2" className="url">{url}
-                    <IconButton onClick={() => navigator.clipboard.writeText(url)}>
-                        <ContentCopyIcon />
-                    </IconButton>
+                    <Tooltip title={copiedUrl ? "Copied" : "Copy to clipboard"} arrow>
+                        <IconButton onClick={handleCopyUrl}>
+                            <ContentCopyIcon />
+                        </IconButton>
+                    </Tooltip>
                 </Typography>
             </CardContent>
         </Card>
